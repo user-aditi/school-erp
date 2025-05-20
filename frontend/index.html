@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>School ERP</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        function App() {
+            return (
+                <div className="min-h-screen bg-gray-100">
+                    <header className="bg-blue-600 text-white p-4">
+                        <h1 className="text-2xl">School ERP</h1>
+                    </header>
+                    <main className="p-4">
+                        <h2 className="text-xl">Student Dashboard</h2>
+                        <p>Student list will appear here.</p>
+                    </main>
+                </div>
+            );
+        }
+        ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+</body>
+</html>
