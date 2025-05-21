@@ -1,14 +1,12 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Attendance List</title>
-</head>
-<body>
-    <h1>Attendance Records</h1>
-    <ul>
-        {% for attendance in attendances %}
-            <li>{{ attendance.student.name }} - {{ attendance.date }} - {{ attendance.status }}</li>
-        {% endfor %}
-    </ul>
-</body>
-</html>
+{% extends 'students/base.html' %}
+
+{% block content %}
+<h2 class="text-xl mb-4">Attendance Records</h2>
+<ul class="space-y-2">
+    {% for attendance in attendances %}
+        <li class="p-2 bg-white rounded shadow">
+            {{ attendance.student.name }} - {{ attendance.date }} - {{ attendance.status }}
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}
