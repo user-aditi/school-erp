@@ -2,6 +2,7 @@
 // import './App.css';
 
 import React, { useState, useEffect } from 'react';
+import AttendanceForm from './AttendanceForm';
 
 function App() {
   const [students, setStudents] = useState([]);
@@ -18,8 +19,10 @@ function App() {
       <header className="bg-blue-600 text-white p-4">
         <h1 className="text-2xl">School ERP</h1>
       </header>
-      <main className="p-4">
+      <main className="p-4 max-w-4xl mx-auto">
         <h2 className="text-xl mb-4">Student Dashboard</h2>
+        <AttendanceForm />
+        <h3 className="text-lg mt-6 mb-2">Student List</h3>
         <ul className="space-y-2">
           {students.map(student => (
             <li key={student.id} className="p-2 bg-white rounded shadow">
