@@ -1,9 +1,11 @@
 from django.shortcuts import render
+from django.contrib.auth.models import User
 from .models import Student, Attendance
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from .serializers import StudentSerializer
 from .serializers import AttendanceSerializer
+from rest_framework.permissions import IsAuthenticated
 
 def student_list(request):
     students = Student.objects.all()
@@ -20,8 +22,14 @@ class StudentListAPI(APIView):
         return Response(serializer.data)
     
 class AttendanceCreateAPI(APIView):
+    permission_classes = [IsAuthenticated]
+
     def post(self, request):
-        serializer = AttendanceSerializer(data=request.data)
+        # Force-set teacher from authenticated user
+        data = request.data.copy()
+        data['teacher'] = request.user.id
+        
+        serializer = AttendanceSerializer(data=data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=201)
